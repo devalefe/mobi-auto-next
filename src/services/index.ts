@@ -11,18 +11,23 @@ export const brandList = async () => {
 
 export const modelList = async (brand: String) => {
   let res = await fetch(`${BASE_URL}/carros/marcas/${brand}/modelos`);
-  let { modelos, anos } = await res.json();
-
+  let { modelos } = await res.json();
   let models: DataType[] = [];
   modelos.map((d: DataType, i: Number) => {
     models.push(d);
   });
 
+  return modelos;
+};
+
+export const yearList = async (brand: String, model: String) => {
+  let res = await fetch(`${BASE_URL}/carros/marcas/${brand}/modelos/${model}/anos`);
+  let anos = await res.json();
   let years: DataType[] = [];
   anos.map((d: DataType, i: Number) => {
     years.push(d);
   });
-  return { models: modelos, years: anos };
+  return anos;
 };
 
 export const getDetails = async ({ brand, model, year }: ResultsType) => {

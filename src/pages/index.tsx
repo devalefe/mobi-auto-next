@@ -24,17 +24,25 @@ const App = () => {
     }
 
     async function handleModel() {
-      let { models, years } = await service.modelList(brand);
+      let models= await service.modelList(brand);
       setModelList(models);
+    }
+
+    async function handleYears() {
+      let years= await service.yearList(brand, model);
       setYearList(years);
     }
+
     if (!brand) {
       handleBrand();
     }
     if (brand) {
       handleModel();
     }
-  }, [brand]);
+    if (brand && model) {
+      handleYears();
+    }
+  }, [brand, model]);
 
   const router = useRouter();
 
