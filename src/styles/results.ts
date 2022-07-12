@@ -37,7 +37,7 @@ export const CResults = styled.div`
     color: #999999;
   }
 
-  a {
+  .link {
     background: #0b9f89;
     padding: 0.3rem 0.5rem;
     color: #fff;

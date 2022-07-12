@@ -5,6 +5,7 @@ import { getDetails } from "../../../../services";
 import ResultsType from "../../../../types";
 import { CResults, ContainerFlex } from "../../../../styles/results";
 import LoadScreen from "../../../../components/LoadScreen/index";
+import Link from "../../../../../node_modules/next/link";
 
 
 const Results = () => {
@@ -30,7 +31,9 @@ const Results = () => {
           <h1>Tabela Fipe: Preço {details?.Marca} {details?.Modelo}</h1>
           <span>{details?.Valor}</span>
           <p>Este é o preço de compra do veiculo</p>
-          <a href="/">Voltar</a>
+          <Link href={'/'}>
+            <a className="link">Voltar</a>
+          </Link>
         </CResults> :
       <LoadScreen />}
     </ContainerFlex>
