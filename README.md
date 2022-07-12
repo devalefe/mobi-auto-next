@@ -25,7 +25,7 @@ e o <a href="https://nodejs.org/pt-br/" target="_blank" >Node</a> instalados.</p
 
 ```bash
 
-# Entre na pasta teste-segware-brasil
+# Entre na pasta mobi-auto-next
 $ cd mobi-auto-next
 $ Execute o comando 'code .' e o projeto sera aberto no Visual Studio Code
 
