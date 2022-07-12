@@ -33,7 +33,15 @@ export const CResults = styled.div`
   }
 
   p {
-    margin-top: 1.5rem;
+    margin: 1.5rem;
     color: #999999;
+  }
+
+  a {
+    background: #0b9f89;
+    padding: 0.3rem 0.5rem;
+    color: #fff;
+    text-decoration: none;
+    border-radius: 0.2rem;
   }
 `;

@@ -18,7 +18,9 @@ const Results = () => {
       let data: ResultsType = await getDetails(query);
       setDetails(data);
     }
-    handleDetails();
+    if (!details) {
+      handleDetails();
+    }
   });
 
   return (
@@ -28,6 +30,7 @@ const Results = () => {
           <h1>Tabela Fipe: Preço {details?.Marca} {details?.Modelo}</h1>
           <span>{details?.Valor}</span>
           <p>Este é o preço de compra do veiculo</p>
+          <a href="/">Voltar</a>
         </CResults> :
       <LoadScreen />}
     </ContainerFlex>
