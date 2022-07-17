@@ -9,7 +9,7 @@ const GlobalStyle = createGlobalStyle`
     }
 
     body {
-        background: #fff9f9;
+        background: #fff;
     }
 `;
 

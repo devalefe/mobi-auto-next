@@ -13,6 +13,7 @@ export const CResults = styled.div`
   background: #dcf5f2;
   justify-content: center;
   padding: 2.5rem;
+  margin: 10px;
   text-align: center;
   font-family: Roboto, sans-serif;
   color: #454b47;
@@ -43,5 +44,12 @@ export const CResults = styled.div`
     color: #fff;
     text-decoration: none;
     border-radius: 0.2rem;
+  }
+
+  @media screen and (max-width: 414px) {
+    padding: 1.5rem 0.5rem;
+    h1 {
+      font-size: 22px;
+    }
   }
 `;

@@ -1,8 +1,9 @@
 import styled from "styled-components";
 
 export const ContainerFlex = styled.div`
-  height: 100vh;
+  height: 100vh !important;
   display: flex;
+  flex: 1;
   flex-direction: column;
   align-items: center;
   justify-content: center;
@@ -24,8 +25,7 @@ export const FormBox = styled.form`
   display: flex;
   flex-direction: column;
   padding: 1.5rem;
-  margin: auto;
-  width: 30rem;
+  margin: 0 10px;
   background-color: #fff;
   border-radius: 0.2rem;
   box-shadow: rgba(0, 0, 0, 0.3) 2px 2px 2px;
