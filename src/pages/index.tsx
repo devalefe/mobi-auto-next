@@ -1,11 +1,11 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import { ContainerFlex, ContainerTextCenter, FormBox } from "../styles/home";
-import { useEffect, useState } from "react";
+import { Button, FormControl, InputLabel, MenuItem, Select } from "@mui/material";
+import { useRouter } from "next/router";
+
+import LoadScreen from "../components/LoadScreen";
 import * as service from "../services";
 import DataType from "../types";
-import { useRouter } from "next/router";
-import { Button, FormControl, InputLabel, MenuItem, Select } from "@mui/material";
-import LoadScreen from "../components/LoadScreen/index";
 
 
 const App = () => {
@@ -18,30 +18,27 @@ const App = () => {
   const [year, setYear] = useState<String>("");
 
   useEffect(() => {
-    async function handleBrand() {
-      let brands: DataType[] = await service.brandList();
+    const handleBrand = async () => {
+      let brands: DataType[] = await
+        service.brandList();
       setBrandList(brands);
     }
 
-    async function handleModel() {
-      let models= await service.modelList(brand);
+    const handleModel = async () => {
+      let models: DataType[] = await
+        service.modelList(brand);
       setModelList(models);
     }
 
-    async function handleYears() {
-      let years= await service.yearList(brand, model);
+    const handleYears = async () => {
+      let years: DataType[] = await
+        service.yearList(brand, model);
       setYearList(years);
     }
 
-    if (!brand) {
-      handleBrand();
-    }
-    if (brand) {
-      handleModel();
-    }
-    if (brand && model) {
-      handleYears();
-    }
+    if (!brand) handleBrand();
+    if (brand) handleModel();
+    if (model) handleYears();
   }, [brand, model]);
 
   const router = useRouter();
@@ -61,15 +58,15 @@ const App = () => {
                 id="demo-simple-select"
                 value={brand}
                 label="Marca"
-                onChange={(e) => setBrand(e.target.value)}
+                onChange={({ target }) => {
+                  setModel('');
+                  setYear('');
+                  setBrand(target.value)
+                }}
               >
-                {brandList?.map(({ codigo, nome }, key) => {
-                  return (
-                    <MenuItem key={key} value={codigo}>
-                      {nome}
-                    </MenuItem>
-                  );
-                })}
+                {brandList?.map(
+                  ({ codigo, nome }, key) => <MenuItem key={key} value={codigo}>{nome}</MenuItem>
+                )}
               </Select>
             </FormControl>
 
@@ -80,20 +77,19 @@ const App = () => {
                 id="demo-simple-select"
                 value={model}
                 label="Modelo"
-                onChange={(e) => setModel(e.target.value)}
+                onChange={({ target }) => {
+                  setYear('');
+                  setModel(target.value)
+                }}
                 disabled={brand ? false : true}
               >
-                {modelList?.map(({ codigo, nome }, key) => {
-                  return (
-                    <MenuItem key={key} value={codigo}>
-                      {nome}
-                    </MenuItem>
-                  );
-                })}
+                {modelList?.map(
+                  ({ codigo, nome }, key) => <MenuItem key={key} value={codigo}>{nome}</MenuItem>
+                )}
               </Select>
             </FormControl>
 
-            {brand && model && (
+            {brand && model &&
               <FormControl fullWidth className="formInput">
                 <InputLabel id="demo-simple-select-label">Ano</InputLabel>
                 <Select
@@ -101,18 +97,14 @@ const App = () => {
                   id="demo-simple-select"
                   value={year}
                   label="Ano"
-                  onChange={(e) => setYear(e.target.value)}
+                  onChange={({ target }) => setYear(target.value)}
                 >
-                  {yearList?.map(({ codigo, nome }, key) => {
-                    return (
-                      <MenuItem key={key} value={codigo}>
-                        {nome}
-                      </MenuItem>
-                    );
-                  })}
+                  {yearList?.map(
+                    ({ codigo, nome }, key) => <MenuItem key={key} value={codigo}>{nome}</MenuItem>
+                  )}
                 </Select>
               </FormControl>
-            )}
+            }
 
             <Button
               variant="contained"

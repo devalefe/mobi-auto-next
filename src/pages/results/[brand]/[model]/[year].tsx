@@ -4,7 +4,7 @@ import { useEffect, useState } from "react";
 import { getDetails } from "../../../../services";
 import ResultsType from "../../../../types";
 import { CResults, ContainerFlex } from "../../../../styles/results";
-import LoadScreen from "../../../../components/LoadScreen/index";
+import LoadScreen from "../../../../components/LoadScreen";
 import Link from "../../../../../node_modules/next/link";
 
 

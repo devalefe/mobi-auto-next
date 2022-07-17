@@ -1,4 +1,4 @@
-import { Spinner } from './styles';
+import { Spinner } from '../../styles/load';
 
 
 const LoadScreen = () => {
